@@ -7,9 +7,7 @@ VOLUME [ "/data" ]
 RUN set -xe && \
     apk update && apk upgrade && \
     apk add --no-cache --virtual=run-deps \
-        # for CLI
-        php84-dev \
-        # for carddav2fb
+        php84-cli \
         php84-curl \
         php84-dom \
         php84-ftp \
