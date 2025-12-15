@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.23
 LABEL description="Download CardDAV VCards and upload as phonebook to AVM FRITZ!Box"
 
 VOLUME [ "/data" ]
@@ -7,17 +7,19 @@ VOLUME [ "/data" ]
 RUN set -xe && \
     apk update && apk upgrade && \
     apk add --no-cache --virtual=run-deps \
-        php7-cli \
-        php7-curl \
-        php7-dom \
-        php7-ftp \
-        php7-gd \
-        php7-mbstring \
-        php7-simplexml \
-        php7-tokenizer \
-        php7-xml \
-        php7-xmlreader \
-        php7-xmlwriter \
+        # for CLI
+        php84-dev \
+        # for carddav2fb
+        php84-curl \
+        php84-dom \
+        php84-ftp \
+        php84-gd \
+        php84-mbstring \
+        php84-simplexml \
+        php84-tokenizer \
+        php84-xml \
+        php84-xmlreader \
+        php84-xmlwriter \
         composer && \
     apk del --progress --purge && \
     rm -rf /var/cache/apk/*
